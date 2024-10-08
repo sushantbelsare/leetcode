@@ -18,14 +18,14 @@ func minLength(s string) int {
     n := len(s)
     i := 1
     j := 0
-    stack := string(s[0])
+    stack := []byte{s[0]}
 
     for i < n {
         if len(stack) > 0 && ((stack[j] == 'A' && s[i] == 'B') || (stack[j] == 'C' && s[i] == 'D')) {
             stack = stack[:j]
             j = j - 1
         }else{
-            stack = stack + string(s[i])
+            stack = append(stack, s[i])
             j = j + 1
         }
 
