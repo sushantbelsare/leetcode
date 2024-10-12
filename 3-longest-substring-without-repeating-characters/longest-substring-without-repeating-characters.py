@@ -2,18 +2,22 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if not s:
             return 0
+        n = len(s)
         hash_map = {}
         max_len = 0
-        repeated_indexes = deque()
+        last_repeated = -1
         for index, c in enumerate(s):
             if c in hash_map:
-                max_len = max(max_len, index - repeated_indexes[0])
-                while repeated_indexes and s[repeated_indexes[0]] != c:
-                    del hash_map[s[repeated_indexes.popleft()]]
-                if repeated_indexes and s[repeated_indexes[0]] == c:
-                    del hash_map[s[repeated_indexes.popleft()]]
+                max_len = max(max_len, index - last_repeated)
+                while last_repeated < n and s[last_repeated] != c:
+                    del hash_map[s[last_repeated]]
+                    last_repeated += 1
+                if last_repeated < n:
+                    del hash_map[s[last_repeated]]
+                    last_repeated += 1
             
             hash_map[c] = index
-            repeated_indexes.append(index)
+            if last_repeated == -1:
+                last_repeated = index
 
-        return max(max_len, len(s) - repeated_indexes[0])
+        return max(max_len, len(s) - last_repeated)
