@@ -9,7 +9,8 @@ class ParkingSystem:
         if carType == 1:
             self.big -= 1
             return self.big >= 0
-        elif carType == 2:
+        
+        if carType == 2:
             self.medium -= 1
             return self.medium >= 0
 
