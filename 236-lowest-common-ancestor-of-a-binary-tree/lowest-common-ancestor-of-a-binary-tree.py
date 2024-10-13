@@ -14,9 +14,9 @@ class Solution:
             l = dfs(node.left)
             m = dfs(node.right)
 
-            if (l == p and m == q) or (l == q and m == p) or (l == p and node == q) or (node == p and l == q) or (m == p and node == q) or (node == p and m == q) or node == p or node == q:
+            if node == p or node == q or (l == p and m == q) or (l == q and m == p):
                 return node
-            
+                
             return l or m
 
         return dfs(root)
