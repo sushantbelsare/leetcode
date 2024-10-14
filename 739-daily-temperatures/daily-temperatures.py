@@ -1,8 +1,7 @@
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         stack = []
-        n = len(temperatures)
-        res = [0] * n
+        res = [0] * len(temperatures)
 
         for index, temperature in enumerate(temperatures):
             while stack and temperatures[stack[-1]] < temperature:
