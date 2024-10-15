@@ -2,6 +2,7 @@ class Solution:
     def minimumSteps(self, s: str) -> int:
         n = len(s)
         steps = i = ones = 0
+     
         while i < n:
             zeros = 0
             while i < n and s[i] == "1":
