@@ -10,13 +10,10 @@ class Solution:
         length = len(num_str)
         for i, (m, n) in enumerate(zip(num_str, sorted(num_str, reverse=True))):
             if m != n:
-                j = i + 1
-                swap_index = 0
-                while j < length:
-                    if num_str[j] == n:
-                        swap_index = j
-                    j += 1
-                num_str = num_str[:swap_index] + m + num_str[swap_index + 1:]
+                j = length - 1
+                while j >= 0 and num_str[j] != n:
+                    j -= 1
+                num_str = num_str[:j] + m + num_str[j + 1:]
                 num_str = num_str[:i] + n + num_str[i + 1:]
                 return int(''.join(num_str))
         return num
