@@ -13,7 +13,5 @@ class Solution:
                 j = length - 1
                 while j >= 0 and num_str[j] != n:
                     j -= 1
-                num_str = num_str[:j] + m + num_str[j + 1:]
-                num_str = num_str[:i] + n + num_str[i + 1:]
-                return int(''.join(num_str))
+                return int(num_str[:i] + n + num_str[i + 1:j] + m + num_str[j + 1:])
         return num
